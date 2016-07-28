@@ -18,7 +18,7 @@ require(splitstackshape)
 #set working directory
 setwd("**your directory here**")
 
-#Read in mean Ct value table
+#Read in  Ct value table
 dCt<-read.csv("./data/ct-values-2015.csv", header=T)
 
 #Split SAMPLE_ID column to create columns for population, treatment, and sample number
@@ -27,16 +27,16 @@ dCt<-cSplit(dCt,"SAMPLE_ID", sep= "_", drop=F)
 #rename columns appropriately
 dCt<-rename(dCt,replace=c("SAMPLE_ID_1"="Pop","SAMPLE_ID_2"="Treat","SAMPLE_ID_3"="Sample"))
 
-#divide each target of interest by the mean Ct value of the Actin Normalizing gene
-dCt$CARM<-2^(dCt$Actinmeanct-dCt$CarmmeanCt)
-dCt$TLR<-2^(dCt$Actinmeanct-dCt$TLRaverage)
-dCt$CRAF<-2^(dCt$Actinmeanct-dCt$CRAFctaverage)
-dCt$H2AV<-2^(dCt$Actinmeanct-dCt$H2AVavgct)
-dCt$PGRP<-2^(dCt$Actinmeanct-dCt$PGRPaverage)
-dCt$HSP70<-2^(dCt$Actinmeanct-dCt$HSP70averageCt)
-dCt$BMP2<-2^(dCt$Actinmeanct-dCt$BMP2average)
-dCt$GRB2<-2^(dCt$Actinmeanct-dCt$GRB2average)
-dCt$PGEEP4<-2^(dCt$Actinmeanct-dCt$PGEEP4ctav)
+#divide each target of interest by the  Ct value of the Actin Normalizing gene
+dCt$CARM<-2^-(dCt$CarmCt-dCt$Actinct)
+dCt$TLR<-2^-(dCt$TLR-dCt$Actinct)
+dCt$CRAF<-2^-(dCt$CRAFct-dCt$Actinct)
+dCt$H2AV<-2^-(dCt$H2AVct-dCt$Actinct)
+dCt$PGRP<-2^-(dCt$PGRP-dCt$Actinct)
+dCt$HSP70<-2^-(dCt$HSP70Ct-dCt$Actinct)
+dCt$BMP2<-2^-(dCt$BMP2-dCt$Actinct)
+dCt$GRB2<-2^-(dCt$GRB2-dCt$Actinct)
+dCt$PGEEP4<-2^-(dCt$PGEEP4ct-dCt$Actinct)
 
 #log transform the data to develop normality in data
 dCt$CARMlog<-log(dCt$CARM)
@@ -86,7 +86,7 @@ CRAF<-aov(CRAFlog~Pop+Treat+Pop:Treat, data=dCt)
 CRAF
 TukeyHSD(CRAF)
 
-#graph all raw mean Ct values to produce boxplots to visualize data
+#graph all normalized Ct values to produce boxplots to visualize data
 
 ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=CARM,fill=Pop))+theme_bw()+
   scale_fill_grey(start=0, end=.9,
@@ -195,6 +195,7 @@ ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=CRAF,fill=Pop))+theme_bw()+
   ylim(c(0,.3))+scale_x_discrete(labels=c("Control","Mechanical","Temperature"))+
   annotate("text",x=c("C","M","T"), y=.3, label=c("A", "B", "AB"), size=10)+
   labs(x="Treatment", y=expression(paste("CRAF Expression (",Delta,"Ct)")))
+
 
 
 
