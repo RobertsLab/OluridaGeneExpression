@@ -27,7 +27,7 @@ dCt<-cSplit(dCt,"SAMPLE_ID", sep= "_", drop=F)
 #rename columns appropriately
 dCt<-rename(dCt,replace=c("SAMPLE_ID_1"="Pop","SAMPLE_ID_2"="Treat","SAMPLE_ID_3"="Sample"))
 
-#divide each target of interest by the  Ct value of the Actin Normalizing gene
+#calculate normalized expression of target gene Ct relative to actin Ct using: 2^-(delta Ct)
 dCt$CARM<-2^-(dCt$CarmCt-dCt$Actinct)
 dCt$TLR<-2^-(dCt$TLR-dCt$Actinct)
 dCt$CRAF<-2^-(dCt$CRAFct-dCt$Actinct)
