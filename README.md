@@ -4,6 +4,8 @@ _Ostrea lurida_ Gene Expression - 2015
 This repository includes raw data and R scripts used to generate figures for 
 
 
+Link to paper
+https://www.dropbox.com/s/xajz7ed3ipcsstj/Oly_gene_expression_peerj_v6.docx?dl=0
 
 **To use these scripts:**
 
