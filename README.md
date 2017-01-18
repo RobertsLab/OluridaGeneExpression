@@ -36,3 +36,6 @@ _dctanalysis.R_
 Olurida_PCRtargets.fa
 
 Olurida_ transcriptome_v3.zip
+
+---
+review-1-137321.pdf - Annotated review provide by Reviewer #2 after PeerJ submission.
