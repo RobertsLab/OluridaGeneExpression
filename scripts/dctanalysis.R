@@ -53,38 +53,47 @@ dCt$TRAFlog<-log(dCt$TRAF)
 CARM<-aov(CARMlog~Pop+Treat+Pop:Treat, data=dCt)
 CARM
 TukeyHSD(CARM)
+summary(CARM)
 
 TLR<-aov(TLRlog~Pop+Treat+Pop:Treat, data=dCt)
 TLR
 TukeyHSD(TLR)
+summary(TLR)
 
 H2AV<-aov(H2AVlog~Pop+Treat+Pop:Treat, data=dCt)
 H2AV
 TukeyHSD(H2AV)
+summary(H2AV)
 
 PGRP<-aov(PGRPlog~Pop+Treat+Pop:Treat, data=dCt)
 PGRP
 TukeyHSD(PGRP)
+summary(PGRP)
 
 HSP70<-aov(HSP70log~Pop+Treat+Pop:Treat, data=dCt)
 HSP70
 TukeyHSD(HSP70)
+summary(HSP70)
 
 BMP2<-aov(BMP2log~Pop+Treat+Pop:Treat, data=dCt)
 BMP2
 TukeyHSD(BMP2)
+summary(BMP2)
 
 GRB2<-aov(GRB2log~Pop+Treat+Pop:Treat, data=dCt)
 GRB2
 TukeyHSD(GRB2)
+summary(GRB2)
 
 PGEEP4<-aov(PGEEP4log~Pop+Treat+Pop:Treat, data=dCt)
 PGEEP4
 TukeyHSD(PGEEP4)
+summary(PGEEP4)
 
 TRAF<-aov(TRAFlog~Pop+Treat+Pop:Treat, data=dCt)
 TRAF
 TukeyHSD(TRAF)
+summary(TRAF)
 
 #graph all normalized Ct values to produce boxplots to visualize data
 
