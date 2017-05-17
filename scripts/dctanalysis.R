@@ -30,7 +30,7 @@ dCt<-rename(dCt,replace=c("SAMPLE_ID_1"="Pop","SAMPLE_ID_2"="Treat","SAMPLE_ID_3
 #calculate normalized expression of target gene Ct relative to actin Ct using: 2^-(delta Ct)
 dCt$CARM<-2^-(dCt$CarmCt-dCt$Actinct)
 dCt$TLR<-2^-(dCt$TLR-dCt$Actinct)
-dCt$CRAF<-2^-(dCt$CRAFct-dCt$Actinct)
+dCt$TRAF<-2^-(dCt$TRAFct-dCt$Actinct)
 dCt$H2AV<-2^-(dCt$H2AVct-dCt$Actinct)
 dCt$PGRP<-2^-(dCt$PGRP-dCt$Actinct)
 dCt$HSP70<-2^-(dCt$HSP70Ct-dCt$Actinct)
@@ -47,7 +47,7 @@ dCt$HSP70log<-log(dCt$HSP70)
 dCt$BMP2log<-log(dCt$BMP2)
 dCt$GRB2log<-log(dCt$GRB2)
 dCt$PGEEP4log<-log(dCt$PGEEP4)
-dCt$CRAFlog<-log(dCt$CRAF)
+dCt$TRAFlog<-log(dCt$TRAF)
 
 #Run ANOVA's on all log transformed data as well as Tukey's Honestly Significant Difference post hoc test
 CARM<-aov(CARMlog~Pop+Treat+Pop:Treat, data=dCt)
@@ -82,9 +82,9 @@ PGEEP4<-aov(PGEEP4log~Pop+Treat+Pop:Treat, data=dCt)
 PGEEP4
 TukeyHSD(PGEEP4)
 
-CRAF<-aov(CRAFlog~Pop+Treat+Pop:Treat, data=dCt)
-CRAF
-TukeyHSD(CRAF)
+TRAF<-aov(TRAFlog~Pop+Treat+Pop:Treat, data=dCt)
+TRAF
+TukeyHSD(TRAF)
 
 #graph all normalized Ct values to produce boxplots to visualize data
 
@@ -184,7 +184,7 @@ ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=PGEEP4,fill=Pop))+theme_bw()+
   ylim(c(0,0.15))+scale_x_discrete(labels=c("Control","Mechanical","Temperature"))+
   labs(x="Treatment", y=expression(paste("PGEEP4 Expression (",Delta,"Ct)")))
 
-ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=CRAF,fill=Pop))+theme_bw()+
+ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=TRAF,fill=Pop))+theme_bw()+
   scale_fill_grey(start=0, end=.9,
                     labels=c("Dabob Bay","Fidalgo Bay","Oyster Bay"))+
   guides(fill=guide_legend(title="Population"))+
@@ -194,7 +194,7 @@ ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=CRAF,fill=Pop))+theme_bw()+
         legend.key=element_rect(fill=NA))+
   ylim(c(0,.3))+scale_x_discrete(labels=c("Control","Mechanical","Temperature"))+
   annotate("text",x=c("C","M","T"), y=.3, label=c("A", "B", "AB"), size=10)+
-  labs(x="Treatment", y=expression(paste("CRAF Expression (",Delta,"Ct)")))
+  labs(x="Treatment", y=expression(paste("TRAF Expression (",Delta,"Ct)")))
 
 
 
