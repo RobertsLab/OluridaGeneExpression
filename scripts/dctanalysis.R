@@ -28,7 +28,7 @@ dCt<-cSplit(dCt,"SAMPLE_ID", sep= "_", drop=F)
 dCt<-rename(dCt,replace=c("SAMPLE_ID_1"="Pop","SAMPLE_ID_2"="Treat","SAMPLE_ID_3"="Sample"))
 
 #calculate normalized expression of target gene Ct relative to actin Ct using: 2^-(delta Ct)
-dCt$CARM<-2^-(dCt$CarmCt-dCt$Actinct)
+dCt$CARM1<-2^-(dCt$CarmCt-dCt$Actinct)
 dCt$TLR<-2^-(dCt$TLR-dCt$Actinct)
 dCt$TRAF<-2^-(dCt$TRAFct-dCt$Actinct)
 dCt$H2AV<-2^-(dCt$H2AVct-dCt$Actinct)
@@ -39,7 +39,7 @@ dCt$GRB2<-2^-(dCt$GRB2-dCt$Actinct)
 dCt$PGEEP4<-2^-(dCt$PGEEP4ct-dCt$Actinct)
 
 #log transform the data to develop normality in data
-dCt$CARMlog<-log(dCt$CARM)
+dCt$CARM1log<-log(dCt$CARM1)
 dCt$TLRlog<-log(dCt$TLR)
 dCt$H2AVlog<-log(dCt$H2AV)
 dCt$PGRPlog<-log(dCt$PGRP)
@@ -50,10 +50,10 @@ dCt$PGEEP4log<-log(dCt$PGEEP4)
 dCt$TRAFlog<-log(dCt$TRAF)
 
 #Run ANOVA's on all log transformed data as well as Tukey's Honestly Significant Difference post hoc test
-CARM<-aov(CARMlog~Pop+Treat+Pop:Treat, data=dCt)
-CARM
-TukeyHSD(CARM)
-summary(CARM)
+CARM1<-aov(CARM1log~Pop+Treat+Pop:Treat, data=dCt)
+CARM1
+TukeyHSD(CARM1)
+summary(CARM1)
 
 TLR<-aov(TLRlog~Pop+Treat+Pop:Treat, data=dCt)
 TLR
@@ -97,7 +97,7 @@ summary(TRAF)
 
 #graph all normalized Ct values to produce boxplots to visualize data
 
-ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=CARM,fill=Pop))+theme_bw()+
+ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=CARM1,fill=Pop))+theme_bw()+
   scale_fill_grey(start=0, end=.9,
                     labels=c("Dabob Bay","Fidalgo Bay","Oyster Bay"))+
   guides(fill=guide_legend(title="Population"))+
@@ -107,7 +107,7 @@ ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=CARM,fill=Pop))+theme_bw()+
         legend.key=element_rect(fill=NA))+
   ylim(c(0,0.3))+scale_x_discrete(labels=c("Control","Mechanical","Temperature"))+
   annotate("text",x=c("C","M","T"), y=0.3, label=c("A", "A", "B"), size=10)+
-  labs(x="Treatment", y=expression(paste("CARM Expression (",Delta,"Ct)")))
+  labs(x="Treatment", y=expression(paste("CARM1 Expression (",Delta,"Ct)")))
 
 
 ggplot(data=dCt)+geom_boxplot(aes(x=Treat, y=TLR, fill=Pop))+theme_bw()+
