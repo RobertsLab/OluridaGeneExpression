@@ -3,6 +3,8 @@
 
 ### "Differential response to stress in *Ostrea lurida* as measured by gene expression."
 
+[![DOI](https://zenodo.org/badge/77959358.svg)](https://zenodo.org/badge/latestdoi/77959358)
+
 
 
 **To use these scripts:**
