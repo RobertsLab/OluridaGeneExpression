@@ -1,5 +1,5 @@
 
-## This repository includes raw data and R scripts used to generate figures for the manuscript submitted to PeerJ - " Differential response to stress in *Ostrea lurida* as measured by gene expression."
+###  This repository includes raw data and R scripts used to generate figures for the manuscript submitted to PeerJ - **"Differential response to stress in *Ostrea lurida* as measured by gene expression."**
 
 
 
