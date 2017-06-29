@@ -17,23 +17,4 @@ If everything works right you should create the figures in the manuscript!
 
 ---
 
-## File Desciptions
 
-** Files Contained in _data_ directory **
-
-_ct-values-2014.csv_
-          
---- 
-** Files Contained in _script_ directory **
-
-_dctanalysis.R_
-
---- 
-** Files Contained in _genome_ directory **
-
-Olurida_PCRtargets.fa
-
-Olurida_ transcriptome_v3.zip
-
----
-review-1-137321.pdf - Annotated review provide by Reviewer #2 after PeerJ submission.
