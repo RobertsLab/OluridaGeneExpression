@@ -1,11 +1,7 @@
-_Ostrea lurida_ Gene Expression - 2015
-=====================
 
-This repository includes raw data and R scripts used to generate figures for 
+## This repository includes raw data and R scripts used to generate figures for the manuscript submitted to PeerJ - " Differential response to stress in *Ostrea lurida* as measured by gene expression."
 
 
-Link to paper
-https://www.dropbox.com/s/xajz7ed3ipcsstj/Oly_gene_expression_peerj_v6.docx?dl=0
 
 **To use these scripts:**
 
